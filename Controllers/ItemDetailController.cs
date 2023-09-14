@@ -19,7 +19,7 @@ namespace GewanInfo.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetItemDetail(int id)
         {
-            var itemDetail = await _context.ItemDetails.FindAsync(id);
+            var itemDetail = await _context.ItemDetail.FindAsync(id);
 
             if (itemDetail == null)
             {
@@ -35,7 +35,7 @@ namespace GewanInfo.Controllers
         {
             try
             {
-                _context.ItemDetails.Add(itemDetail);
+                _context.ItemDetail.Add(itemDetail);
                 await _context.SaveChangesAsync();
                 return CreatedAtAction("GetItemDetail", new { id = itemDetail.Id }, itemDetail);
             }
@@ -79,13 +79,13 @@ namespace GewanInfo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItemDetail(int id)
         {
-            var itemDetail = await _context.ItemDetails.FindAsync(id);
+            var itemDetail = await _context.ItemDetail.FindAsync(id);
             if (itemDetail == null)
             {
                 return NotFound();
             }
 
-            _context.ItemDetails.Remove(itemDetail);
+            _context.ItemDetail.Remove(itemDetail);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -93,7 +93,7 @@ namespace GewanInfo.Controllers
 
         private bool ItemDetailExists(int id)
         {
-            return _context.ItemDetails.Any(e => e.Id == id);
+            return _context.ItemDetail.Any(e => e.Id == id);
         }
     }
 }

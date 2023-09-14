@@ -9,7 +9,7 @@ namespace GewanInfo
         {
         }
 
-        public DbSet<ItemMaster> ItemMasters { get; set; }
-        public DbSet<ItemDetail> ItemDetails { get; set; }
+        public DbSet<ItemMaster> ItemMaster { get; set; }
+        public DbSet<ItemDetail> ItemDetail { get; set; }
     }
 }

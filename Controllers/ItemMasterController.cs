@@ -19,7 +19,7 @@ namespace GewanInfo.Controllers
         [HttpGet]
         public IActionResult GetItemMasters()
         {
-            var itemMasters = _context.ItemMasters.ToList();
+            var itemMasters = _context.ItemMaster.ToList();
             return Ok(itemMasters);
         }
 
@@ -27,7 +27,7 @@ namespace GewanInfo.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetItemMaster(int id)
         {
-            var itemMaster = await _context.ItemMasters.FindAsync(id);
+            var itemMaster = await _context.ItemMaster.FindAsync(id);
 
             if (itemMaster == null)
             {
@@ -43,7 +43,7 @@ namespace GewanInfo.Controllers
         {
             try
             {
-                _context.ItemMasters.Add(itemMaster);
+                _context.ItemMaster.Add(itemMaster);
                 await _context.SaveChangesAsync();
                 return CreatedAtAction("GetItemMaster", new { id = itemMaster.Id }, itemMaster);
             }
@@ -87,13 +87,13 @@ namespace GewanInfo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItemMaster(int id)
         {
-            var itemMaster = await _context.ItemMasters.FindAsync(id);
+            var itemMaster = await _context.ItemMaster.FindAsync(id);
             if (itemMaster == null)
             {
                 return NotFound();
             }
 
-            _context.ItemMasters.Remove(itemMaster);
+            _context.ItemMaster.Remove(itemMaster);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GewanInfo.Controllers
 
         private bool ItemMasterExists(int id)
         {
-            return _context.ItemMasters.Any(e => e.Id == id);
+            return _context.ItemMaster.Any(e => e.Id == id);
         }
     }
 }
